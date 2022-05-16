@@ -7,11 +7,11 @@
   transition: 0.4s;
 }
 .body {
-  margin-top: 7vh;
+  margin-top: 3vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6vh;
+  gap: 3vh;
   background: #4a4949;
 }
 .text {
@@ -19,11 +19,10 @@
 }
 .screen {
   margin: 0 auto;
-  width: 80%;
-  height: 60vh;
+  width:69%;
   display: grid;
-  grid-template-columns: 70% 30%;
-  grid-template-rows: 90% 10%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 85% 15%;
 }
 .slide-container {
   display: grid;
@@ -32,22 +31,22 @@
   grid-column: 1/3;
 }
 .text-container {
+  padding-top: 1rem;
   display: grid;
   grid-template-columns: repeat(4, 100%);
+  text-align: center;
   overflow: hidden;
 }
 .control-container {
   display: flex;
+  justify-content: center;
   gap: 1rem;
 }
 .image-container {
-  width: 100%;
-  height: 100%;
   text-align: center;
 }
-.image-container img {
-  height: 100%;
-  transition: all ease-in-out .3s;
+.image {
+  height: 58vh;
 }
 .inp {
   display: none;
@@ -55,16 +54,35 @@
 .lab {
   width: 2rem;
   height: 2rem;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   align-items: center;
   cursor: pointer;
 }
 .circle {
-  height: 1rem;
   width: 1rem;
-  margin: 0 auto;
+  height: 1rem;
   border: 2px solid #ffffff;
   border-radius: 50%;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out .4s;
+}
+@media (max-width: 768px) {
+  .screen {
+    width:98%;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+  .image {
+    height: 40vh;
+  }
+  .text-container {
+    grid-row: 3/4;
+  }
+  .control-container {
+    grid-row: 2/3;
+  }
 }
 
 #slide1:checked~.control-container label:nth-of-type(1) .circle,
@@ -77,11 +95,42 @@
 #slide2:checked~.slide-container .image-container:nth-of-type(2),
 #slide3:checked~.slide-container .image-container:nth-of-type(3),
 #slide4:checked~.slide-container .image-container:nth-of-type(4) {
+  animation: animate_fading 1s;
   order: -1;
 }
 #slide1:checked~.text-container .text-h3:nth-of-type(1),
 #slide2:checked~.text-container .text-h3:nth-of-type(2),
 #slide3:checked~.text-container .text-h3:nth-of-type(3),
 #slide4:checked~.text-container .text-h3:nth-of-type(4) {
+  animation: animate_fading 1s;
   order: -1;
+}
+@keyframes animate_fading {
+  0% {
+		opacity: 0;
+	}
+  12% {
+		opacity: 0.12;
+	}
+	25% {
+		opacity: 0.25;
+	}
+  37% {
+		opacity: 0.37;
+	}
+	50% {
+		opacity: 0.5;
+	}
+  63% {
+		opacity: 0.63;
+	}
+	75% {
+		opacity: 0.75;
+	}
+  88% {
+		opacity: 0.88;
+	}
+	100% {
+		opacity: 1;
+	}
 }
